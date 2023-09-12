@@ -76,7 +76,7 @@ public class ChampionsDAO {
 	public DreamTeam goalkeeperForSavedDividedConcededPlusSaved() {
 		String sql="SELECT g.name, g.`position`, s.club, g.age, g.`FIFA_wage_€`, g.`FIFA_value_€`, s.minutes_played, s.saved/(s.conceded + s.saved) AS stats "
 				+ "FROM giocatori g, statistiche s "
-				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`=\"Portiere\" AND s.minutes_played>= 270 "
+				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`=\"Portiere\" AND s.minutes_played>= 540 "
 				+ "ORDER BY stats DESC, s.saved desc";	
 		
 		try {
@@ -102,7 +102,7 @@ public class ChampionsDAO {
 	public DreamTeam goalkeeperForConcededDividedMinutesPlayed() {
 		String sql="SELECT g.name, g.`position`, s.club, g.age, g.`FIFA_wage_€`, g.`FIFA_value_€`, s.minutes_played,s.conceded/s.minutes_played AS stats "
 				+ "FROM giocatori g, statistiche s "
-				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`=\"Portiere\"  AND s.minutes_played>= 270 "
+				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`=\"Portiere\"  AND s.minutes_played>= 540 "
 				+ "ORDER BY stats asc, s.minutes_played DESC";
 	
 		try {
@@ -128,7 +128,7 @@ public class ChampionsDAO {
 	public DreamTeam goalkeeperForCleansheetsDividedMatchPlayed() {
 		String sql="SELECT g.name, g.`position`, s.club, g.age, g.`FIFA_wage_€`, g.`FIFA_value_€`, s.minutes_played,s.cleansheets/s.match_played AS stats "
 					+ "FROM giocatori g, statistiche s "
-					+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`=\"Portiere\" AND s.minutes_played>= 270 "
+					+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`=\"Portiere\" AND s.minutes_played>= 540 "
 					+ "ORDER BY stats desc, s.cleansheets DESC";
 	
 		try {
@@ -155,7 +155,7 @@ public class ChampionsDAO {
 	public List<DreamTeam> playersForBallsRecoverdDividedMinutesPlayed(){
 		String sql= "SELECT g.name, g.`position`, s.club, g.age, g.`FIFA_wage_€`, g.`FIFA_value_€`, s.minutes_played,s.balls_recoverd/s.minutes_played AS stats "
 				+ "FROM giocatori g, statistiche s "
-				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 270 "
+				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 540 "
 				+ "ORDER BY stats desc, s.balls_recoverd desc";
 		List<DreamTeam> risultato= new ArrayList<>();
 		
@@ -183,7 +183,7 @@ public class ChampionsDAO {
 	public List<DreamTeam> playersForTacklesWonDividedTackles(){
 		String sql= "SELECT g.name, g.`position`, s.club, g.age, g.`FIFA_wage_€`, g.`FIFA_value_€`, s.minutes_played,s.tackles_won/s.tackles AS stats "
 				+ "FROM giocatori g, statistiche s "
-				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 270 "
+				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 540 "
 				+ "ORDER BY stats DESC, s.tackles_won desc";
 		List<DreamTeam> risultato= new ArrayList<>();
 		
@@ -211,7 +211,7 @@ public class ChampionsDAO {
 	public List<DreamTeam> playersForPassCompletedDividedPassAttempted(){
 		String sql= "SELECT g.name, g.`position`, s.club, g.age, g.`FIFA_wage_€`, g.`FIFA_value_€`, s.minutes_played,s.pass_completed/s.pass_attempted AS stats "
 				+ "FROM giocatori g, statistiche s "
-				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 270 "
+				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 540 "
 				+ "ORDER BY stats DESC, s.pass_completed desc";
 		List<DreamTeam> risultato= new ArrayList<>();
 		
@@ -239,7 +239,7 @@ public class ChampionsDAO {
 	public List<DreamTeam> playersForAssistDividedMinutesPlayed(){
 		String sql= "SELECT g.name, g.`position`, s.club, g.age, g.`FIFA_wage_€`, g.`FIFA_value_€`, s.minutes_played,s.assist/s.minutes_played AS stats "
 				+ "FROM giocatori g, statistiche s "
-				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 270 "
+				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 540 "
 				+ "ORDER BY stats DESC, s.assist desc";
 		List<DreamTeam> risultato= new ArrayList<>();
 		
@@ -267,7 +267,7 @@ public class ChampionsDAO {
 	public List<DreamTeam> playersForGoalsDividedMinutesPlayed(){
 		String sql= "SELECT g.name, g.`position`, s.club, g.age, g.`FIFA_wage_€`, g.`FIFA_value_€`, s.minutes_played,s.goals/s.minutes_played AS stats "
 				+ "FROM giocatori g, statistiche s "
-				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 270 "
+				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 540 "
 				+ "ORDER BY stats DESC, s.goals desc";
 		List<DreamTeam> risultato= new ArrayList<>();
 		
@@ -295,7 +295,7 @@ public class ChampionsDAO {
 	public List<DreamTeam> playersForDribblesDividedMinutesPlayed(){
 		String sql= "SELECT g.name, g.`position`, s.club, g.age, g.`FIFA_wage_€`, g.`FIFA_value_€`, s.minutes_played,s.dribbles/s.minutes_played AS stats "
 				+ "FROM giocatori g, statistiche s "
-				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 270 "
+				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 540 "
 				+ "ORDER BY stats DESC, s.dribbles desc";
 		List<DreamTeam> risultato= new ArrayList<>();
 		
@@ -323,7 +323,7 @@ public class ChampionsDAO {
 	public List<DreamTeam> playersForShotOnTargetDividedShotAttempts(){
 		String sql= "SELECT g.name, g.`position`, s.club, g.age, g.`FIFA_wage_€`, g.`FIFA_value_€`, s.minutes_played,s.shot_on_target/s.shot_attempts AS stats "
 				+ "FROM giocatori g, statistiche s "
-				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 270 "
+				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 540 "
 				+ "ORDER BY stats DESC, s.shot_on_target desc";
 		List<DreamTeam> risultato= new ArrayList<>();
 		
@@ -351,7 +351,7 @@ public class ChampionsDAO {
 	public List<DreamTeam> playersForGoalsDividedShotAttempts(){
 		String sql= "SELECT g.name, g.`position`, s.club, g.age, g.`FIFA_wage_€`, g.`FIFA_value_€`, s.minutes_played, s.goals/s.shot_attempts AS stats "
 				+ "FROM giocatori g, statistiche s "
-				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 270 "
+				+ "WHERE g.IDGiocatore= s.IDGiocatore AND g.`position`!=\"Portiere\" AND s.minutes_played>= 540 "
 				+ "ORDER BY stats DESC, s.goals desc";
 		List<DreamTeam> risultato= new ArrayList<>();
 		
