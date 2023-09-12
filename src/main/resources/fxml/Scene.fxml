@@ -2,25 +2,313 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.provaFinale.FXMLController">
-   <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.provaFinale.FXMLController">
+   <top>
+      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-              <Button fx:id="button" onAction="#handleButtonAction" text="Click Me!" />
-              <Label fx:id="label" minHeight="16" minWidth="69">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
+            <Label alignment="CENTER" text="Statistiche UEFA Champions League 2021-2022">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
             </Label>
+            <ImageView fitHeight="103.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logoUCL.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin>
+            </ImageView>
          </children>
+         <BorderPane.margin>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </BorderPane.margin>
          <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
          </padding>
       </HBox>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Statistiche singolo giocatore:">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+            <HBox>
+               <children>
+                  <ComboBox fx:id="cmbPlayer" prefHeight="26.0" prefWidth="207.0" promptText="Selezionare un giocatore " />
+                  <Button fx:id="btnPlayerStats" mnemonicParsing="false" onAction="#findPlayerStats" text="Ricerca statistiche giocatore">
+                     <HBox.margin>
+                        <Insets left="52.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <Label text="Statistiche squadra:">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Label>
+            <HBox>
+               <children>
+                  <ComboBox fx:id="cmbClub" prefHeight="26.0" prefWidth="207.0" promptText="Selezionare una squadra" />
+                  <Button fx:id="btnClubStats" mnemonicParsing="false" onAction="#findClubStats" text="Ricerca statistiche squadra">
+                     <HBox.margin>
+                        <Insets left="52.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <Label text="Dream team:">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Label>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="- Modulo:">
+                     <font>
+                        <Font name="Arial Italic" size="14.0" />
+                     </font></Label>
+                  <ComboBox fx:id="cmbFormation" prefHeight="26.0" prefWidth="166.0" promptText="Selezionare un modulo">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin></ComboBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0">
+               <children>
+                  <Label text="- Budget massimo per salario:">
+                     <font>
+                        <Font name="Arial Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtMaxSalary" prefHeight="26.0" prefWidth="104.0" promptText="Esempio: 100.00">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label text=" €">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Percentuale salario da dedicare al portiere:">
+                     <font>
+                        <Font name="Arial Italic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="18.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtGoalkeeperSalary" prefHeight="26.0" prefWidth="90.0" promptText="Esempio: 3.85">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label text=" %">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0">
+               <children>
+                  <Label text="- Budget massimo per valore economico :">
+                     <font>
+                        <Font name="Arial Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtMaxValue" prefHeight="26.0" prefWidth="110.0" promptText="Esempio: 2500.00">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label text=" €">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label text="Percentuale valore economico da dedicare al portiere:">
+                     <font>
+                        <Font name="Arial Italic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="18.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtGoalkeeperValue" prefHeight="26.0" prefWidth="90.0" promptText="Esempio: 0.50">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label text=" %">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0">
+               <children>
+                  <Label text="- Statistica portiere da ottimizzare:">
+                     <font>
+                        <Font name="Arial Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbGoalkeeperStats" prefHeight="26.0" prefWidth="274.0" promptText="Selezionare una caratteristica per il portiere">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0">
+               <children>
+                  <Label text="- Statistica giocatori di movimento da ottimizzare:">
+                     <font>
+                        <Font name="Arial Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbTeamStats" prefHeight="26.0" prefWidth="352.0" promptText="Selezionare una caratteristica per i giocatori di movimento">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0">
+               <children>
+                  <Label text="- Numero minimo minuti giocati:">
+                     <font>
+                        <Font name="Arial Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtMinMinutesPlayed" prefHeight="26.0" prefWidth="203.0" promptText="il valore inserito dovrà essere ≥ 540">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label text=" min">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0">
+               <children>
+                  <Label text="- Età: ">
+                     <font>
+                        <Font name="Arial Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbMinAge" prefHeight="26.0" prefWidth="89.0" promptText="Minima">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="cmbMaxAge" prefHeight="26.0" prefWidth="89.0" promptText="Massima">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0">
+               <children>
+                  <Label text="- Numero massimo di giocatori di movimento appartenenti alla stessa squadra:">
+                     <font>
+                        <Font name="Arial Italic" size="14.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmbPlayersSameTeam" prefHeight="26.0" prefWidth="155.0" promptText="Selezionare un valore">
+                     <HBox.margin>
+                        <Insets left="6.0" />
+                     </HBox.margin>
+                  </ComboBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btnDreamTeamNoConstraints" mnemonicParsing="false" onAction="#createDreamTeamWithoutConstraints" text="Crea Dream Team senza vincoli">
+                     <HBox.margin>
+                        <Insets right="30.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="btnDreamTeamConstraints" mnemonicParsing="false" onAction="#createDreamTeamWithConstraints" text="Crea Dream Team con vincoli" />
+               </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="8.0" left="8.0" right="8.0" />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </padding>
+      </VBox>
    </center>
+   <bottom>
+      <TextArea fx:id="txtResult" editable="false" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+         </padding>
+      </TextArea>
+   </bottom>
 </BorderPane>
