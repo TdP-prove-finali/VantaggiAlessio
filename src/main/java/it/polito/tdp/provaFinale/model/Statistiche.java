@@ -598,22 +598,22 @@ public class Statistiche {
 
 	@Override
 	public String toString() {
-		return this.club+",  "+this.getMatchPlayed()+"  partite giocate.\n\nSTATISTICHE:\n"+
+		return this.club+",  "+this.getMatchPlayed()+"  partite giocate.\n\nSTATISTICHE PORTIERI:\n"+
 				"- saved: "+this.getSaved()+" → "+this.getSavedRank()+"º\n"+
 				"- saved / (conceded + saved): "+ this.getSavedDividedConcededPlusSaved()+" → "+this.getRanksavedDividedConcededPlusSaved()+"º\n"+
 				"- conceded: "+this.getConceded()+" → "+this.getConcededRank()+"º\n"+
 				"- conceded / match played: "+this.getConcededDividedMatchPlayed()+" → "+this.getRankConcededDividedMatchPlayed()+"º\n"+
-				"- cleansheets: "+this.getCleansheets()+ " → " + this.getCleansheetsRank()+"º\n"+
+				"- cleansheets: "+this.getCleansheets()+ " → " + this.getCleansheetsRank()+"º\n\nSTATISTICHE DIFENSIVE:\n"+
 				"- balls recoverd: "+this.getBallsRecoverd()+" → "+this.getBallsRecoverdRank()+"º\n"+
 				"- balls recoverd / match played: "+ this.getBallsRecoverdDividedMatchPlayed()+" → "+this.getRankBallsRecoverdDividedMatchPlayed()+"º\n"+
 				"- tackles: "+this.getTackles()+" → "+this.getTacklesRank()+"º\n"+
 				"- tackles won: "+this.getTacklesWon()+" → "+this.getTacklesWonRank()+"º\n"+
-				"- tackles won / tackles: "+this.getTacklesWonDividedTackles()+" → "+this.getRankTacklesWonDividedTackles()+"º\n"+
+				"- tackles won / tackles: "+this.getTacklesWonDividedTackles()+" → "+this.getRankTacklesWonDividedTackles()+"º\n\nSTATISTICHE PASSAGGI:\n"+
 				"- pass attempted: "+this.getPassAttempted()+" → "+this.getPassAttemptedRank()+"º\n"+
 				"- pass completed: "+this.getPassCompleted()+" → "+this.getPassCompletedRank()+"º\n"+
 				"- pass completed / pass attempted: "+this.getPassCompletedDividedPassAttempted()+" → "+this.getPassCompletedDividedPassAttemptedRank()+"º\n"+
 				"- assist: "+this.getAssist()+" → "+this.getRankAssist()+"º\n"+
-				"- assist / match played: "+this.getAssistDividedMatchPlayed()+" → "+this.getRankAssistDividedMatchPlayed()+"º\n"+
+				"- assist / match played: "+this.getAssistDividedMatchPlayed()+" → "+this.getRankAssistDividedMatchPlayed()+"º\n\nSTATISTICHE OFFENSIVE:\n"+
 				"- shot attempts: "+this.getShotAttempts()+" → "+this.getRankShotAttempts()+"º\n"+
 				"- shot on target: "+this.getShotOnTarget()+" → "+this.getRankShotOnTarget()+"º\n"+
 				"- shot on target / shot attempts: "+this.getShotOnTargetDividedShotAttempts()+" → "+this.getShotOnTargetDividedShotAttemptsRank()+"º\n"+

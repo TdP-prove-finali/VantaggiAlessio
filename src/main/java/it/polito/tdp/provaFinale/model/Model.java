@@ -429,7 +429,7 @@ public class Model {
 		if(player.getPosition().equals("Portiere")) {
 			Statistiche stats= this.dao.getStatisticsGoalkeeper(player.getIDGiocatore());
 			risultato+= player.getName()+",  "+player.getPosition()+",  "+stats.getClub()+",  "+player.getAge()+"  anni,  FIFA value: "+
-					decimalFormat.format(player.getFifaValue())+" €,  FIFA wage: "+decimalFormat.format(player.getFifaWage())+" €\n\nSTATISTICHE:\n"+
+					decimalFormat.format(player.getFifaValue())+" €,  FIFA wage: "+decimalFormat.format(player.getFifaWage())+" €\n\nSTATISTICHE PORTIERE:\n"+
 					"- saved: "+stats.getSaved()+" → "+stats.getSavedRank()+"º\n"+
 					"- saved / (conceded + saved): "+ stats.getSavedDividedConcededPlusSaved()+" → "+stats.getRanksavedDividedConcededPlusSaved()+"º\n"+
 					"- conceded: "+stats.getConceded()+" → "+stats.getConcededRank()+"º\n"+
@@ -441,17 +441,17 @@ public class Model {
 		else {
 			Statistiche stats= this.dao.getStatisticsPlayer(player.getIDGiocatore());
 			risultato+= player.getName()+",  "+player.getPosition()+",  "+stats.getClub()+",  "+player.getAge()+"  anni,  FIFA value: "+
-					decimalFormat.format(player.getFifaValue())+" €,  FIFA wage: "+decimalFormat.format(player.getFifaWage())+" €\n\nSTATISTICHE:\n"+
+					decimalFormat.format(player.getFifaValue())+" €,  FIFA wage: "+decimalFormat.format(player.getFifaWage())+" €\n\nSTATISTICHE DIFENSIVE:\n"+
 					"- balls recoverd: "+stats.getBallsRecoverd()+" → "+stats.getBallsRecoverdRank()+"º\n"+
 					"- balls recoverd / minutes played: "+ stats.getBallsRecoverdDividedMinutesPlayed()+" → "+stats.getRankBallsRecoverdDividedMinutesPlayed()+"º\n"+
 					"- tackles: "+stats.getTackles()+" → "+stats.getTacklesRank()+"º\n"+
 					"- tackles won: "+stats.getTacklesWon()+" → "+stats.getTacklesWonRank()+"º\n"+
-					"- tackles won / tackles: "+stats.getTacklesWonDividedTackles()+" → "+stats.getRankTacklesWonDividedTackles()+"º\n"+
+					"- tackles won / tackles: "+stats.getTacklesWonDividedTackles()+" → "+stats.getRankTacklesWonDividedTackles()+"º\n\nSTATISTICHE PASSAGGI:\n"+
 					"- pass attempted: "+stats.getPassAttempted()+" → "+stats.getPassAttemptedRank()+"º\n"+
 					"- pass completed: "+stats.getPassCompleted()+" → "+stats.getPassCompletedRank()+"º\n"+
 					"- pass completed / pass attempted: "+stats.getPassCompletedDividedPassAttempted()+" → "+stats.getPassCompletedDividedPassAttemptedRank()+"º\n"+
 					"- assist: "+stats.getAssist()+" → "+stats.getRankAssist()+"º\n"+
-					"- assist / minutes played: "+stats.getAssistDividedMinutesPlayed()+" → "+stats.getRankAssistDividedMinutesPlayed()+"º\n"+
+					"- assist / minutes played: "+stats.getAssistDividedMinutesPlayed()+" → "+stats.getRankAssistDividedMinutesPlayed()+"º\n\nSTATISTICHE OFFENSIVE:\n"+
 					"- shot attempts: "+stats.getShotAttempts()+" → "+stats.getRankShotAttempts()+"º\n"+
 					"- shot on target: "+stats.getShotOnTarget()+" → "+stats.getRankShotOnTarget()+"º\n"+
 					"- shot on target / shot attempts: "+stats.getShotOnTargetDividedShotAttempts()+" → "+stats.getShotOnTargetDividedShotAttemptsRank()+"º\n"+

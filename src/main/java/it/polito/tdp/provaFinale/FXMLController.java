@@ -91,19 +91,19 @@ public class FXMLController {
     	
     	// Controllo campo non vuoto
     	if(txtMaxValue.getText().equals("")) {
-    		txtResult.setText("Errore in Budget massimo per valore economico: inserire un valore numerico nel campo");
+    		txtResult.setText("Errore in Budget totale value: inserire un valore numerico nel campo");
     		return;
     	}
     	if(txtMaxSalary.getText().equals("")) {
-    		txtResult.setText("Errore in Budget massimo per salario: inserire un valore numerico nel campo");
+    		txtResult.setText("Errore in Budget totale wage: inserire un valore numerico nel campo");
     		return;
     	}
     	if(txtGoalkeeperValue.getText().equals("")) {
-    		txtResult.setText("Errore in Percentuale valore economico da dedicare al portiere: inserire un valore numerico nel campo");
+    		txtResult.setText("Errore in Percentuale value per il portiere: inserire un valore numerico nel campo");
     		return;
     	}
     	if(txtGoalkeeperSalary.getText().equals("")) {
-    		txtResult.setText("Errore in Percentuale salario da dedicare al portiere: inserire un valore numerico nel campo");
+    		txtResult.setText("Errore in Percentuale wage per il portiere: inserire un valore numerico nel campo");
     		return;
     	}
     	if(txtMinMinutesPlayed.getText().equals("")) {
@@ -122,8 +122,8 @@ public class FXMLController {
 			minMinutesPlayed= Integer.parseInt(txtMinMinutesPlayed.getText());
 			
 		} catch (Exception e) {
-			txtResult.setText("Errore inserire valori numerici nei campi: Budget massimo per salario, Percentuale salario da dedicare al portiere, "
-					+ "Budget massimo per valore economico, Percentuale valore economico da dedicare al portiere, "
+			txtResult.setText("Errore inserire valori numerici nei campi: Budget totale value, Percentuale value per il portiere, "
+					+ "Budget totale wage, Percentuale wage per il portiere, "
 					+ "Numero minimo minuti giocati!");
 			return;
 		}
@@ -172,7 +172,7 @@ public class FXMLController {
     	
     	// Controllo player same team 
     	if(cmbPlayersSameTeam.getValue()== null) {
-    		txtResult.setText("Errore in Numero massimo di giocatori di movimento appartenenti alla stessa squadra: selezionare un valore dal menù a tendina");
+    		txtResult.setText("Errore in Numero massimo giocatori di movimento per squadra: selezionare un valore dal menù a tendina");
     		return;
     	}
     	    	
@@ -188,6 +188,22 @@ public class FXMLController {
 
     @FXML
     void createDreamTeamWithoutConstraints(ActionEvent event) {
+    	// Controllo formazione
+    	if(cmbFormation.getValue()== null) {
+    		txtResult.setText("Errore in Modulo: selezionare un valore dal menù a tendina");
+    		return;
+    	}
+    	
+    	// Controllo caratteristiche 
+    	if(cmbGoalkeeperStats.getValue()== null) {
+    		txtResult.setText("Errore in Statistica portiere da ottimizzare: selezionare un valore dal menù a tendina");
+    		return;
+    	}
+    	if(cmbTeamStats.getValue()== null) {
+    		txtResult.setText("Errore in Statistica giocatori di movimento da ottimizzare: selezionare un valore dal menù a tendina");
+    		return;
+    	}
+    	
     	// Inizializzo tutti i parametri della ricerca del DREAM TEAM con vincoli 
     	txtMaxValue.setText("");
     	txtGoalkeeperValue.setText("");
