@@ -167,7 +167,7 @@
                         </Label>
                         <HBox alignment="CENTER">
                            <children>
-                              <TextField fx:id="txtMaxValue" prefHeight="26.0" prefWidth="115.0" promptText="Esempio: 2500.00">
+                              <TextField fx:id="txtMaxValue" prefHeight="26.0" prefWidth="145.0" promptText="Esempio: 484000000.00">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -196,7 +196,7 @@
                         </Label>
                         <HBox alignment="CENTER">
                            <children>
-                              <TextField fx:id="txtGoalkeeperValue" prefHeight="26.0" prefWidth="115.0" promptText="Esempio: 0.50">
+                              <TextField fx:id="txtGoalkeeperValue" prefHeight="26.0" prefWidth="145.0" promptText="Esempio: 9.50">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -231,7 +231,7 @@
                               <Insets />
                            </VBox.margin>
                            <children>
-                              <TextField fx:id="txtMaxSalary" prefHeight="26.0" prefWidth="115.0" promptText="Esempio: 100.00">
+                              <TextField fx:id="txtMaxSalary" prefHeight="26.0" prefWidth="145.0" promptText="Esempio: 1067000.00">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>
@@ -263,7 +263,7 @@
                         </Label>
                         <HBox alignment="CENTER">
                            <children>
-                              <TextField fx:id="txtGoalkeeperSalary" prefHeight="26.0" prefWidth="115.0" promptText="Esempio: 3.85">
+                              <TextField fx:id="txtGoalkeeperSalary" prefHeight="26.0" prefWidth="145.0" promptText="Esempio: 11.85">
                                  <HBox.margin>
                                     <Insets />
                                  </HBox.margin>

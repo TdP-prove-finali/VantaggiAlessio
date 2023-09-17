@@ -13,7 +13,7 @@ import it.polito.tdp.provaFinale.model.Statistiche;
 public class ChampionsDAO {
 	
 	/**
-	 * Metodo per leggere la lista di tutti i calciatori presenti nel database e popolare l'identity map.
+	 * Metodo per leggere la lista di tutti i calciatori presenti nel database.
 	 * @param playersIdMap
 	 * @return {@code List<Giocatore>}
 	 */
@@ -42,7 +42,7 @@ public class ChampionsDAO {
 	
 	
 	/**
-	 * Metodo per leggere la lista di tutte le squadre presenti nel database e popolare l'identity map.
+	 * Metodo per leggere la lista di tutte le squadre presenti nel database.
 	 * @param playersIdMap
 	 * @return {@code List<Squadra>}
 	 */
@@ -915,6 +915,50 @@ public class ChampionsDAO {
 			
 		} catch (Exception e) {
 			System.out.println("Errore in getStatisticsClub");
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public Integer countPlayers(){
+		String sql= "SELECT count(*) as tot FROM giocatori WHERE `position`!=\"Portiere\"";
+		
+		try {
+			Connection conn= DBConnect.getConnection();
+			PreparedStatement st= conn.prepareStatement(sql);
+			ResultSet rs= st.executeQuery();
+			
+			rs.first();
+			int risultato= rs.getInt("tot");
+			
+			
+			conn.close();
+			return risultato;			
+			
+		} catch (Exception e) {
+			System.out.println("Errore in countPlayers");
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public Integer countGoalkeeper(){
+		String sql= "SELECT count(*) as tot FROM giocatori WHERE `position`= \"Portiere\"";
+		
+		try {
+			Connection conn= DBConnect.getConnection();
+			PreparedStatement st= conn.prepareStatement(sql);
+			ResultSet rs= st.executeQuery();
+			
+			rs.first();
+			int risultato= rs.getInt("tot");
+			
+			
+			conn.close();
+			return risultato;			
+			
+		} catch (Exception e) {
+			System.out.println("Errore in countGoalkeeper");
 			e.printStackTrace();
 			return null;
 		}

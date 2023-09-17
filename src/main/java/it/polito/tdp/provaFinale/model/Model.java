@@ -159,7 +159,7 @@ public class Model {
 		// Verifico i vincoli del portiere 
 		DreamTeam portiere= getGoalkeeperDreamTeam(goalkeeperStats, minutesPlayed, minAge, maxAge, goalkeeperWage, goalkeeperValue);
 		if(portiere== null)
-			return "Errore creazione DREAM TEAM: nessun portiere selezionabile con vincoli inseriti!";
+			return "Errore creazione DREAM TEAM: nessun portiere selezionabile con vincoli inseriti!\n";
 		
 		double teamValue= value-portiere.getFifaValue();
 		double teamWage= wage-portiere.getFifaWage();
@@ -169,10 +169,10 @@ public class Model {
 				minutesPlayed, minAge, maxAge, teamWage, teamValue, maxSameTeam);
 				
 		if(lista== null)
-			return "Errore creazione DREAM TEAM: vincoli giocatori di movimento troppo stringenti!";
+			return "Errore creazione DREAM TEAM: vincoli giocatori di movimento troppo stringenti!\n";
 		
 		if(lista.isEmpty())
-			return "Errore creazione DREAM TEAM: vincoli giocatori di movimento troppo laschi, algoritmo computazionalmente troppo oneroso!";
+			return "Errore creazione DREAM TEAM: vincoli giocatori di movimento troppo ampi, algoritmo computazionalmente troppo oneroso, ristringere i vincoli!\n";
 		
 		// Se sono qui sono sicuro che ho un dream team 
 		String risultato="DREAM TEAM con vincoli:\n\nPORTIERE\n"+portiere+"\n\nDIFENSORI\n";
@@ -423,12 +423,13 @@ public class Model {
 
 	// Punto 1 -> Statistiche singolo giocatore
 	public String getStatisticsPlayer(Giocatore player) {
-		String risultato="In totale nel database ci sono: "+this.getAllPlayers().size()+" giocatori.\n\nGIOCATORE SELEZIONATO:\n";
+		String risultato="";
 		DecimalFormat decimalFormat = new DecimalFormat("#,###");
 		
 		if(player.getPosition().equals("Portiere")) {
 			Statistiche stats= this.dao.getStatisticsGoalkeeper(player.getIDGiocatore());
-			risultato+= player.getName()+",  "+player.getPosition()+",  "+stats.getClub()+",  "+player.getAge()+"  anni,  FIFA value: "+
+			risultato+= "In totale nel database ci sono: "+this.dao.countGoalkeeper()+" portieri.\n\nGIOCATORE SELEZIONATO:\n"+
+					player.getName()+",  "+player.getPosition()+",  "+stats.getClub()+",  "+player.getAge()+"  anni,  FIFA value: "+
 					decimalFormat.format(player.getFifaValue())+" €,  FIFA wage: "+decimalFormat.format(player.getFifaWage())+" €\n\nSTATISTICHE PORTIERE:\n"+
 					"- saved: "+stats.getSaved()+" → "+stats.getSavedRank()+"º\n"+
 					"- saved / (conceded + saved): "+ stats.getSavedDividedConcededPlusSaved()+" → "+stats.getRanksavedDividedConcededPlusSaved()+"º\n"+
@@ -440,7 +441,8 @@ public class Model {
 		
 		else {
 			Statistiche stats= this.dao.getStatisticsPlayer(player.getIDGiocatore());
-			risultato+= player.getName()+",  "+player.getPosition()+",  "+stats.getClub()+",  "+player.getAge()+"  anni,  FIFA value: "+
+			risultato+= "In totale nel database ci sono: "+this.dao.countPlayers()+" giocatori di movimento.\n\nGIOCATORE SELEZIONATO:\n"+
+					player.getName()+",  "+player.getPosition()+",  "+stats.getClub()+",  "+player.getAge()+"  anni,  FIFA value: "+
 					decimalFormat.format(player.getFifaValue())+" €,  FIFA wage: "+decimalFormat.format(player.getFifaWage())+" €\n\nSTATISTICHE DIFENSIVE:\n"+
 					"- balls recoverd: "+stats.getBallsRecoverd()+" → "+stats.getBallsRecoverdRank()+"º\n"+
 					"- balls recoverd / minutes played: "+ stats.getBallsRecoverdDividedMinutesPlayed()+" → "+stats.getRankBallsRecoverdDividedMinutesPlayed()+"º\n"+

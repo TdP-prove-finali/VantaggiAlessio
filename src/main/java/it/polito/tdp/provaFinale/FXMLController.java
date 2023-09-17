@@ -81,6 +81,7 @@ public class FXMLController {
 
     @FXML
     void createDreamTeamWithConstraints(ActionEvent event) {  	
+    	long startTime = System.currentTimeMillis();
     	double value= 0.0;
     	double wage= 0.0;
     	
@@ -89,25 +90,30 @@ public class FXMLController {
     	
     	int minMinutesPlayed=0;
     	
+    	if(! txtResult.getText().equals("")) {
+    		if(! txtResult.getText().startsWith("E"))
+    			txtResult.setText("");
+    	}
+    	
     	// Controllo campo non vuoto
     	if(txtMaxValue.getText().equals("")) {
-    		txtResult.setText("Errore in Budget totale value: inserire un valore numerico nel campo");
+    		txtResult.appendText("Errore in Budget totale value: inserire un valore numerico nel campo\n");
     		return;
     	}
     	if(txtMaxSalary.getText().equals("")) {
-    		txtResult.setText("Errore in Budget totale wage: inserire un valore numerico nel campo");
+    		txtResult.appendText("Errore in Budget totale wage: inserire un valore numerico nel campo\n");
     		return;
     	}
     	if(txtGoalkeeperValue.getText().equals("")) {
-    		txtResult.setText("Errore in Percentuale value per il portiere: inserire un valore numerico nel campo");
+    		txtResult.appendText("Errore in Percentuale value per il portiere: inserire un valore numerico nel campo\n");
     		return;
     	}
     	if(txtGoalkeeperSalary.getText().equals("")) {
-    		txtResult.setText("Errore in Percentuale wage per il portiere: inserire un valore numerico nel campo");
+    		txtResult.appendText("Errore in Percentuale wage per il portiere: inserire un valore numerico nel campo\n");
     		return;
     	}
     	if(txtMinMinutesPlayed.getText().equals("")) {
-    		txtResult.setText("Errore in Numero minimo minuti giocati: inserire un valore numerico nel campo");
+    		txtResult.appendText("Errore in Numero minimo minuti giocati: inserire un valore numerico nel campo\n");
     		return;
     	}
     	
@@ -122,85 +128,91 @@ public class FXMLController {
 			minMinutesPlayed= Integer.parseInt(txtMinMinutesPlayed.getText());
 			
 		} catch (Exception e) {
-			txtResult.setText("Errore inserire valori numerici nei campi: Budget totale value, Percentuale value per il portiere, "
+			txtResult.appendText("Errore inserire valori numerici nei campi: Budget totale value, Percentuale value per il portiere, "
 					+ "Budget totale wage, Percentuale wage per il portiere, "
-					+ "Numero minimo minuti giocati!");
+					+ "Numero minimo minuti giocati!\n");
 			return;
 		}
     	
     	// Controllo formazione
     	if(cmbFormation.getValue()== null) {
-    		txtResult.setText("Errore in Modulo: selezionare un valore dal menù a tendina");
+    		txtResult.appendText("Errore in Modulo: selezionare un valore dal menù a tendina\n");
     		return;
     	}
     	
     	//Controllo percentuale 
     	if(percentualePorValue<0 || percentualePorValue> 100) {
-    		txtResult.setText("Errore in Percentuale valore economico da dedicare al portiere: inserire un valore percentuale compreso tra 0 e 100");
+    		txtResult.appendText("Errore in Percentuale valore economico da dedicare al portiere: inserire un valore percentuale compreso tra 0 e 100\n");
     		return;
     	}
     	if(percentualePorWage<0 || percentualePorWage> 100) {
-    		txtResult.setText("Errore in Percentuale salario da dedicare al portiere: inserire un valore percentuale compreso tra 0 e 100");
+    		txtResult.appendText("Errore in Percentuale salario da dedicare al portiere: inserire un valore percentuale compreso tra 0 e 100\n");
     		return;
     	}
     	
     	// Controllo caratteristiche 
     	if(cmbGoalkeeperStats.getValue()== null) {
-    		txtResult.setText("Errore in Statistica portiere da ottimizzare: selezionare un valore dal menù a tendina");
+    		txtResult.appendText("Errore in Statistica portiere da ottimizzare: selezionare un valore dal menù a tendina\n");
     		return;
     	}
     	if(cmbTeamStats.getValue()== null) {
-    		txtResult.setText("Errore in Statistica giocatori di movimento da ottimizzare: selezionare un valore dal menù a tendina");
+    		txtResult.appendText("Errore in Statistica giocatori di movimento da ottimizzare: selezionare un valore dal menù a tendina\n");
     		return;
     	}
 
     	// Controllo minuti
     	if(minMinutesPlayed< 540) {
-    		txtResult.setText("Errore in Numero minimo minuti giocati: il valore inserito deve essere maggiore o uguale a 540");
+    		txtResult.appendText("Errore in Numero minimo minuti giocati: il valore inserito deve essere maggiore o uguale a 540\n");
     		return;
     	}
     	
     	// Controllo età
     	if(cmbMinAge.getValue()== null || cmbMaxAge.getValue()== null) {
-    		txtResult.setText("Errore in Età: selezionare un valore dal menù a tendina");
+    		txtResult.appendText("Errore in Età: selezionare un valore dal menù a tendina\n");
     		return;
     	}
     	if(cmbMinAge.getValue()> cmbMaxAge.getValue()) {
-    		txtResult.setText("Errore in Età: l'età minima deve esere minore o uguale a quella massima");
+    		txtResult.appendText("Errore in Età: l'età minima deve esere minore o uguale a quella massima\n");
     		return;
     	}    	
     	
     	// Controllo player same team 
     	if(cmbPlayersSameTeam.getValue()== null) {
-    		txtResult.setText("Errore in Numero massimo giocatori di movimento per squadra: selezionare un valore dal menù a tendina");
+    		txtResult.appendText("Errore in Numero massimo giocatori di movimento per squadra: selezionare un valore dal menù a tendina\n");
     		return;
     	}
     	    	
     	double gValue= value * percentualePorValue;
     	double gWage= wage * percentualePorWage;
     	
-    	
-    	
-    	this.txtResult.setText(this.model.createDreamTeam(cmbFormation.getValue(), cmbGoalkeeperStats.getValue(),
+    	String risultato=this.model.createDreamTeam(cmbFormation.getValue(), cmbGoalkeeperStats.getValue(),
     			cmbTeamStats.getValue(), value, wage, gValue, gWage, minMinutesPlayed,
-    			cmbMinAge.getValue(), cmbMaxAge.getValue(), cmbPlayersSameTeam.getValue()));
+    			cmbMinAge.getValue(), cmbMaxAge.getValue(), cmbPlayersSameTeam.getValue()); 
+    	
+    	if(risultato.startsWith("E"))
+    		this.txtResult.appendText(risultato);
+    	else
+    		this.txtResult.setText(risultato);
+    	
+    	long endTime = System.currentTimeMillis();
+    	System.out.println((endTime-startTime)/1000.00);
     }
 
     @FXML
     void createDreamTeamWithoutConstraints(ActionEvent event) {
     	// Controllo formazione
     	if(cmbFormation.getValue()== null) {
-    		txtResult.setText("Errore in Modulo: selezionare un valore dal menù a tendina");
+    		txtResult.setText("Errore in Modulo: selezionare un valore dal menù a tendina\n");
     		return;
     	}
     	
     	// Controllo caratteristiche 
     	if(cmbGoalkeeperStats.getValue()== null) {
-    		txtResult.setText("Errore in Statistica portiere da ottimizzare: selezionare un valore dal menù a tendina");
+    		txtResult.setText("Errore in Statistica portiere da ottimizzare: selezionare un valore dal menù a tendina\n");
     		return;
     	}
     	if(cmbTeamStats.getValue()== null) {
-    		txtResult.setText("Errore in Statistica giocatori di movimento da ottimizzare: selezionare un valore dal menù a tendina");
+    		txtResult.setText("Errore in Statistica giocatori di movimento da ottimizzare: selezionare un valore dal menù a tendina\n");
     		return;
     	}
     	
@@ -219,20 +231,26 @@ public class FXMLController {
 
     @FXML
     void findClubStats(ActionEvent event) {
+    	long startTime = System.currentTimeMillis();
     	if(cmbClub.getValue()== null) {
-    		txtResult.setText("Errore: selzionare una squadra dal menù a tendina");
+    		txtResult.setText("Errore: selzionare una squadra dal menù a tendina\n");
     		return;
     	}
     	txtResult.setText(this.model.getStatisticsClub(cmbClub.getValue().getClub()));
+    	long endTime = System.currentTimeMillis();
+    	System.out.println((endTime-startTime)/1000.00);
     }
 
     @FXML
     void findPlayerStats(ActionEvent event) {
+    	long startTime = System.currentTimeMillis();
     	if(cmbPlayer.getValue()== null) {
-    		txtResult.setText("Selzionare un giocatore dal menù a tendina");
+    		txtResult.setText("Errore: selzionare un giocatore dal menù a tendina\n");
     		return;
     	}
     	txtResult.setText(this.model.getStatisticsPlayer(cmbPlayer.getValue()));
+    	long endTime = System.currentTimeMillis();
+    	System.out.println((endTime-startTime)/1000.00);
     }
 
     @FXML
