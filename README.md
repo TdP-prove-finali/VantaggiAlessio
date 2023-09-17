@@ -12,7 +12,7 @@
 - La relazione tecnica è stats rilasciata con [Licenza Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## Documentazione
-Per ulteriori informazioni riguardanti il progetto è possbile consultare la cartella [Documenti]().
+Per ulteriori informazioni riguardanti il progetto è possbile consultare la cartella [Documenti](https://github.com/TdP-prove-finali/VantaggiAlessio/tree/master/documenti).
 
 
 **Alessio Vantaggi**
