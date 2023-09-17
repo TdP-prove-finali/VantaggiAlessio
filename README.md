@@ -9,10 +9,10 @@
 
 ## Licenses
 - Il software è stato rilasciato con licenza Open Source [Apache 2.0](https://github.com/TdP-prove-finali/VantaggiAlessio/blob/master/LICENSE).
-- La relazione tecnica è stats rilasciata con [Licenza Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- La relazione tecnica è stata rilasciata con [Licenza Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ## Documentazione
-Per ulteriori informazioni riguardanti il progetto è possbile consultare la cartella [Documenti](https://github.com/TdP-prove-finali/VantaggiAlessio/tree/master/documenti).
+Per ulteriori informazioni riguardanti il progetto è possibile consultare la cartella [Documenti](https://github.com/TdP-prove-finali/VantaggiAlessio/tree/master/documenti).
 
 
 **Alessio Vantaggi**
